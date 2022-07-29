@@ -1,0 +1,249 @@
+<html>
+{% load static %}
+  <head>
+    <title>Créer un offre</title>
+      	<meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'Css/formset.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/pdf.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="offre">
+    
+        <form method="POST">
+          {% csrf_token %}
+          
+           <li>
+            <label>Produit</label>  
+              {{Offre.product}}
+          </li>
+
+          <button type = "submit "  onclick="mynext()" name="offre"> Ajouter </button>
+            
+        </form>
+         
+          
+     
+        <a id="pdf"  style="display:none" href="{% url 'pdfcreateAchat' %}" download><span>Telecharger PDF</span><span>PDF</span></a>
+      </div>
+        
+        <script>
+                     function showpdf() {
+
+                    const pdf = document.getElementById('pdf');
+                    pdf.style.display = 'block';
+                    
+                     };
+        </script>
+      
+
+        <script>
+          function mynext() {
+  const form = document.getElementById('next');
+  const Prod = document.getElementById('offre')
+    // 👇️ this SHOWS the form
+    form.style.display = 'block';
+    Prod.style.display = 'none'
+};
+</script>
+<div id='next' style='display:none'>
+           {% if choix == 'LOCATION' %}
+              
+                <li>
+                    <label>l'offre actuel</label>
+                    {{last_offer}}
+                </li>
+                <form method="POST">
+                {% csrf_token %}
+                
+                <li>
+                  <label>Date de visite</label>
+                  {{Location.dateVisite}}                  <br>
+                </li>
+                <li>
+                  <label>Honoraire HT</label>
+                  {{Location.honoraireHT}}
+                </li>
+                <li> 
+                  <label>Honoraire TTC</label>
+                  {{Location.honoraireTTC}}
+                </li>  
+                <li>
+                  <label>Loyer proposé</label>
+                  {{Location.loyerPropose}}
+                </li>
+                <li>
+                  <label> Charges </label>
+                  {{Location.charges}}
+                </li>
+                <li>
+                  <label>  Charge acquéreur </label>
+                  {{Location.chargesAcquereur}}
+                </li>
+                <li>
+                  <label>  Charges Vendeur </label>
+                  {{Location.chargesVendeur}}
+                </li>
+                <li>
+                  <label>  Bail</label>
+                  {{Location.bail}}
+                </li>
+                <li>
+                  <label>  Durée du bail </label>
+                  {{Location.dureeBail}}
+                </li>
+                <li>
+                  <label>  Dépot de garanti </label>
+                 {{Location.depotGranti}}
+                </li>
+                <li>
+                  <label>  Taxe Frontière </label>
+                  {{Location.taxeFrontiere}}
+                </li>
+                <li>
+                  <label>  Financement </label>
+                  {{Location.financement}}
+                </li>
+                <div id="fini" style="display:none">
+                <li>
+                  <label>  Montant </label>
+                  {{Location.montant}}
+                </li>
+                <li>
+                  <label>  Taux </label>
+                  {{Location.taux}}
+                </li>
+                <li>
+                  <label>  Durée </label>
+                  {{Location.duree}}
+                </li>
+                </div>
+                <li>
+                  <label>  Permission de construction </label>
+                  {{Location.permisConstruction}}
+                </li>
+                <li>
+                  <label>  Droit de préemption </label>
+                  {{Location.droitPreemption}}
+                </li>
+                <li>
+                  <label>  Faculté de substitution </label>
+                  {{Location.faculteSubstitution}}
+                </li>
+                
+                <button type="submit" name="send"> Ajouter </button>
+                </form>
+            {% elif choix == 'VENTE' %}
+                <li>
+                  <label>l'offre actuel</label>
+                  {{last_offer}}
+                </li>
+                <form method="POST">
+              {% csrf_token %}
+               <li>
+                  <label>Date de visite</label>
+                  {{Achat.dateVisite}}
+                  <br>
+              </li>
+              <li>
+                <label>Honoraire HT</label>
+                {{Achat.honoraireHT}}
+              </li>
+              <li> 
+                 <label>Honoraire TTC</label>
+                  {{Achat.honoraireTTC}}
+              </li>
+              <li>
+                <label> Prix proposé </label>
+                {{Achat.prixPropose}}
+              </li>
+              <li>
+                <label> Indémnité</label>
+               {{Achat.indemnite}}
+              </li>
+              <li>
+                <label> Activité</label>
+               {{Achat.activite}}
+              </li>
+              <li>
+                 <label> Délai de validité</label>
+                  {{Achat.delaiValidite}}
+              </li>
+              <li>
+                  <label>  Financement </label>
+                  {{Location.financement}}
+                </li>
+                <div id="fini" style="display:none">
+                <li>
+                  <label>  Montant </label>
+                  {{Achat.montant}}
+                </li>
+                <li>
+                  <label>  Taux </label>
+                  {{Achat.taux}}
+                </li>
+                <li>
+                  <label>  Durée </label>
+                  {{Achat.duree}}
+                </li>
+                <li>
+                  <label>  Apport </label>
+                  {{Achat.apport}}
+                </li>
+                </div>
+                <li>
+                  <label>  Permission de construction </label>
+                  {{Achat.permisConstruction}}
+                </li>
+                <li>
+                  <label>  Droit de préemption </label>
+                  {{Achat.droitPreemption}}
+                </li>
+                <li>
+                  <label>  Faculté de substitution </label>
+                  {{Achat.faculteSubstitution}}
+                </li>
+                  <button type="submit" onclick="showpdf()" name="send"> Ajouter </button>
+                  
+            </form>
+
+            
+         
+         {% endif %}
+
+
+        
+</div>
+<script>
+
+document.getElementById("id_honoraireHT").value = "{{dic.honoraireHT}}";
+document.getElementById("id_honoraireTTC").value = "{{dic.honoraireTTC}}";
+document.getElementById("initial-id_dateVisite").value = "{{dic.dateVisite}}";
+if ('{{choix}}' == 'VENTE')
+document.getElementById("id_prixPropose").value = "{{dic.loyerPropose}}";
+else {
+  document.getElementById("id_loyerPropose").value = "{{dic.loyerPropose}}";
+}
+
+
+
+const finance = document.getElementById("id_financement");
+const fin = document.getElementById("fini");
+
+document.getElementById("id_montant").value = "{{dic.montant}}";
+document.getElementById("id_taux").value = "{{dic.taux}}";
+document.getElementById("id_duree").value = "{{dic.duree}}";
+document.getElementById("id_apport").value = "{{dic.apport}}";
+finance.onclick = function(){
+  fin.style.display = 'block'
+}
+
+
+</script>
+
+
+
+</body>
+</html>
