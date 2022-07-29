@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'Css/Navba.css' %}">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	<title>Menu</title>
+</head>
+<body id="body-pd">
+    <script src="{% static 'JavaScript/navbar.js' %}"></script>
+
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        Bonjour {{name}}
+        <div class="header_img">  <img src="{{url}}" alt=""> </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Courcier immobilier</span> </a>
+                <div class="nav_list"> 
+                    <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Menu</span> </a>
+                    <a href="#" class="nav_link" onclick="mynextall()"> <i class='bx bx-building-house nav_icon'></i> <span class="nav_name" >Produit</span> </a>
+                    <div class=" submenu" style="display: none; background-color: rgb(56, 13, 13); border-radius: 20%;" id="submenu">
+                     <a href="{% url 'formst' %}" class="nav_link"><i class='bx bx-add-to-queue nav_icon'></i><span class="nav_name"> Ajout </span></a>
+                     <a href="{% url 'Affichage' %}" class="nav_link"><i class='bx bx-search nav_icon'></i><span class="nav_name"> Liste </span></a>
+                    </div> 
+                    <a href="#" class="nav_link" onclick="mynextall1()"> <i class='bx bx-transfer nav_icon'></i> <span class="nav_name">Transaction</span> </a>
+                    <div class=" submenu1" style="display: none; background-color: rgb(56, 13, 13); border-radius: 20%;" id="submenu1">
+                        <a href="{% url 'demande' %}" class="nav_link"><i class='bx bx-add-to-queue nav_icon'></i><span class="nav_name"> Demande </span></a>
+                        <a href="{% url 'mandat' %}" class="nav_link"><i class='bx bx-search nav_icon'></i><span class="nav_name"> Mandats </span></a>
+                        <a href="{% url 'estimation'%}" class="nav_link"><i class='bx bx-search nav_icon'></i><span class="nav_name"> Estimation </span></a>
+                        <a href="{% url 'offre'%}" class="nav_link"><i class='bx bx-search nav_icon'></i><span class="nav_name"> Offre </span></a>
+                       </div>  
+                    <a href="#" class="nav_link"> <i class='bx bx-calendar-week nav_icon'></i> <span class="nav_name">Calendrier</span> </a> 
+                    <a href="#" class="nav_link"> <i class='bx bx-chat nav_icon'></i> <span class="nav_name">Contact</span> </a>
+                    <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Suivie</span> </a> 
+                 </div>
+            </div> <a href="http://127.0.0.1:8000/menu/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Deconnecter</span> </a>
+        </nav>
+    </div>
+    <Container Main start></Container>
+    
+        <!--Container Main end-->
+
+</body>
+</html>

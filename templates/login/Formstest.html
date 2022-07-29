@@ -1,0 +1,562 @@
+{% load static %}
+ <html>
+
+    <head>
+     <!-- {% if '' == choix %} -->
+      <title> Ajouter</title>
+      <!--{% endif %} -->
+      <link rel="stylesheet" href="{% static 'Css/formset.css' %}">
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+      #id_product {
+        width : 90%;
+      }
+      
+    </style>
+   
+    </head>
+    <body>
+ 
+      
+     <script src="{% static 'JavaScript/form.js' %}"></script>
+     <div class="height-100 bg-light" id="height">
+      {% include 'login/Produit.html' %}
+      <div class="forms">
+       
+        <form method="POST"  >
+          {% csrf_token %}
+        <ul class="form-style-1">
+          <div id="produit">
+          <table>
+           <tr>
+            <td>
+           <li>
+           <label>Métier</label>  
+           {{Produit.metier}}
+          </li>
+           <li>
+            <label>Catégorie</label> 
+            {{Produit.categorie}} 
+           </li>
+          <li>
+            <label>Etape</label>
+            {{Produit.etape}}
+            <br>
+          </li>
+          <li>
+            <label>Utilisateur</label>
+            {{Produit.utilisateur}}
+          </li>
+          <li> 
+            <label>Type de Mandat</label>
+            {{Produit.typeMandat}}
+          </li>
+          </td>
+          <td>
+          <li>
+            <label>Propriétaire</label>
+            
+              {{Produit.proprietaire}}
+           
+            <div class="box" style="display: flex;">
+              <a class="button" href="#popup1">ajouter un contact 
+              </a>
+            </div>
+            
+          </li>
+          <li> 
+           <label>Adresse</label>
+            {{Produit.adresse}}
+          </li>
+            
+            
+          <li>
+            <label>Ville</label>
+            {{Produit.ville}}
+          </li>
+          <li> 
+            <label>Code Postal</label>
+            {{Produit.codePostal}}
+          </li>
+          <li>
+            <label>Afficher l'adresse</label>
+            {{Produit.affichAdresse}}
+            <br>
+          </li>
+          </td>
+          <td>
+          <li>
+            <label>Prix Net Vendeur</label>
+            {{Produit.prixNetVendeur}}
+          </li>
+          <li>
+            <label>Prix Affiché</label>
+            {{Produit.prixAffiche}}
+          </li>
+          <li> 
+            <label>Honoraires</label>
+            {{Produit.honoraire}}
+          </li>
+          <li>
+            <label>Montant des Honoraires</label>
+            {{Produit.montantHonoraire}}
+          </li>
+          </td>
+          </tr>
+          </table>
+         </div>
+         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+      <script>
+      $(document).ready(function() {
+        jQuery('#id_utilisateur').select2();
+        });
+      </script>
+  
+
+
+      
+          <div id="next" style="display:none">
+            <table>
+             <tr>
+              <td>
+              <li>
+              <label>Surface totale </label>
+                    {{Produit.surfaceTotale}}
+              </li>
+              <li>   
+              <label> type de bien </label>
+                {{Produit.typeBien}}
+              </li>
+              </td>
+              <td>
+              <li> 
+                <label> Nbr de pieces </label>  
+                 {{Produit.nombrePieces}}
+              </li>
+              <li>
+                <label> Taille de terrain </label>
+                {{Produit.tailleTerrain}}
+              </li>
+              </td>
+             </tr>
+            </table>
+              </div>
+             
+            </ul> 
+            <button type = "submit "  id="check"  name="prod"> Enregister </button>
+            {{eror}}
+        </form>
+
+
+      </div>
+      <script type="text/javascript">
+        $(document).on('submit','#task-form',function(e){
+            e.preventDefault();
+            $.ajax({
+                type:'POST',
+                url:'{% url "formst" %}',
+                data:
+                {
+                    task:$("#task").val(),
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+                },
+                success:function(){
+                      alert('Saved');
+                        }
+                })
+            });
+        </script>
+
+
+
+
+
+     
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+      $('select').selectize({
+          sortField: 'text'
+      });
+  });
+</script>
+
+<div id="popup1" class="overlay">
+  <div class="popup">
+    <h2>Ajouter un contact </h2>
+    <a class="close" href="#">&times;</a>
+    <div class="content">
+     
+      <form method="POST">
+        <table>
+         <tr >
+        {% csrf_token %}
+      <td>
+       <li> 
+        <label> Societe </label>
+      </li>
+         {{Contact.societe}}
+      
+      <li>
+      <label> Prenom </label>
+    </li>  
+      {{Contact.prenom}}
+        
+        <li>
+        <label> Nom </label>
+      </li>
+        {{Contact.nom}}
+        
+       <li>
+        <label> Mail </label>
+      </li>
+        {{Contact.mail}}
+        
+      <li>
+        <label> Adresse </label>
+      </li>
+        {{Contact.adresse}}
+        
+      <li>
+        <label> Code Postal </label>
+      </li>
+        {{Contact.codePostal}}
+       </td>
+       <td>
+      <li>
+        <label> Ville </label>
+      </li>
+        {{Contact.ville}}
+        
+      <li>
+        <label> Statut </label>
+      </li>
+   
+        {{Contact.statut}}
+        <li>
+          <label>  Gender </label>
+       </li>
+            {{Contact.genre}} 
+      <li>
+        <label> Capital Social  </label>
+      </li> 
+        {{Contact.capitalSocial}}
+
+      <li>
+        <label> Num RCS </label>
+      </li>
+        {{Contact.numRCS}}
+        
+      <li> 
+         <label> Telephone</label>
+        </li>
+         {{Contact.telephone}}
+        
+      <li>
+         <label> Ville RCS </label>
+        </li>
+         {{Contact.villeRCS}}
+       </td>
+         </tr>
+        </table>
+        <button type="submit" name ="contact"> Ajouter </button>
+        </form>
+      
+
+    </div>
+  </div>
+  </div>
+</div>
+<div id="commentaire" style="display: none ; align-items: center;">
+ <form method="POST">
+  <table>
+  {% csrf_token %}  
+ <tr>
+  <td>
+  <li>
+   <label> Titre de l'annonce </label>
+ </li> 
+
+   {{Produit.TitreAnnonce}}
+ <li>
+  <label> Commentaire</label>
+ </li> 
+  {{Produit.commentaire}}               
+ 
+ <button type="submit" name="commentaire1"> Ajouter</button>
+  </td>
+ </tr>
+  </table>
+</form>
+</div>
+<div id ="photos" style="display: none;">
+  <form enctype="multipart/form-data" method="post">
+   {% csrf_token%}
+   <li>
+    <div class="image-upload"> 
+    <label for="id_image"> 
+          <img src="https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/128/Downloads-icon.png"/>
+       
+      
+    </label>
+    </div>
+    </li>
+         {{photo.image}}
+
+      
+        <!-- <p><img id="output" width="200" /></p> -->
+ <style>
+  .image-upload > input {
+    display: none;
+  
+}
+ </style>
+<script>
+var loadFile = function(event) {
+	var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+</script> 
+
+    
+   <button type="submit"  name = "photos" >Ajouter</button>
+ 
+ </form>
+                 <div class="container">
+                   {% for img in dataImage  %}
+                 <div class="card card0" style='background: url("{{img.image.url}}") center center no-repeat;'>
+                  <div class="border">
+                    <h2>{{nom.produit.typeBien}}</h2>
+                    <div class="icons">
+                  
+                      <i class="fa fa-codepen" aria-hidden="true"></i>
+                      <i class="fa fa-instagram" aria-hidden="true"></i>
+                      <i class="fa fa-dribbble" aria-hidden="true"></i>
+                      <i class="fa fa-twitter" aria-hidden="true"></i>
+                      <i class="fa fa-facebook" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+</div>
+   
+ </div>
+
+
+   {%  with j=1 %}
+  {% if choix == 'BUREAU'%}
+  <form method="POST" style="margin-top: 150px;">
+   
+    {% csrf_token %}
+    <div class="metier">
+    
+       
+           {% for i  in nbr  %}
+           <ul>
+            
+           <li>
+           
+            <label> Surface {{ i|add:j }} : </label>
+           </li>
+           <li>  
+            {{Surface.nom}} 
+            </li>
+            <li>
+              {{Surface.taille}}
+              
+            </li>
+            
+          </ul> 
+           
+          {% endfor %}
+        </div> 
+       
+          <button type="submit" name="send1"> Ajouter </button>
+        </form> 
+          
+    {% elif choix == 'LOCAL_COMMERCIAL' %}
+                <form method="POST" style="margin-top: 150px;"> 
+                  <table>
+                  <tr>
+                  <td>
+                  {% csrf_token %}
+                  <ul  class="form-style-1">
+                        {% for i  in nbr %}
+                        <div class="metier">
+                        <li> 
+                           <label> Surface {{ i|add:j }} : </label>
+                         </li>
+                          {{Surface.nom}} {{Surface.taille}} 
+                        
+                      
+                          </div>
+                     {% endfor %}
+                        </td>
+                <td>
+                 
+                 
+                 <li>
+                   <label> Emplacement </label>
+                 </li>
+                   {{ Localcom.emplacement}}
+                   
+                 <li> 
+                  <label> Parking </label>
+                 </li>
+                  {{ Localcom.parking}}
+                 
+                 </td>
+                 <td>
+                   <li>
+                    <label> details parking </label>
+                  </li>
+                    {{ Localcom.detailsParking}} 
+                
+                 <li>
+                   <label> Linear vitrine</label>
+                 </li>
+                  {{ Localcom.lineaireVitrine}}
+                
+                  <li>
+                    <label> Dernier activité</label>
+                  </li>
+                    {{ Localcom.derniereActivite}}
+                
+                 </td>
+                  </tr>
+                  </table>
+                </ul>
+                <button type="submit" name="send1"> Enregister </button>
+
+                  </form>
+ 
+                  
+           {% elif choix == 'ENTREPOT' %}
+              <form method="POST" style="margin-top: 150px;">
+                {% csrf_token %}
+                <table>
+                <tr>
+                <td>
+                <ul  class="form-style-1">
+                        {% for i  in nbr %}
+                        <div class="metier">
+                         <li>
+                           <label> Surface {{ i|add:j }} : </label>
+                         </li>
+                           {{Surface.nom}} {{Surface.taille}}
+                        
+                        </div>
+                        {% endfor %}
+                      </td>
+                      <td>
+                      
+                        
+                        <li><label> Type de construction </label>
+                        </li>
+                          {{Entrepot.typeConstruction}}
+                        
+                        </td>
+                        <td>
+                        <li>
+                        <label>  Hauteur sous plafond </label>
+                        </li> 
+                        {{Entrepot.HauteurSousPlafond}}
+                        
+                        <li>
+                        <label>  Charges de copropriété </label>
+                        </li> 
+                        {{Entrepot.ChargesCopropriete}}
+                        
+                        </td>
+                        </ul>
+                </tr>
+                </table>
+                        <button type="submit"  name="send1"> Enregister </button>
+                        </form>
+            {% elif choix == 'TERRAIN' %}
+            <form method="POST" style="margin-top: 150px;">
+              {% csrf_token %}
+              <table>
+              <tr>
+              <ul  class="form-style-1">
+               <td>
+                      {% for i  in nbr %}
+                      <div class="metier">
+                        <li>
+                          <label> Surface {{ i|add:j }} : </label>
+                         </li>
+                        {{Surface.nom}} {{Surface.taille}}
+                      </div>
+                      {% endfor %}
+               </td>
+               <td>
+                  
+                      <li>
+                        <label>  Coef emprise au sol </label>
+                      </li>
+                      {{Terrain.coefEmpriseSol}}
+                  </td>
+                  <td>
+                     <li>
+                       <label> Coef espace vert </label>
+                     </li>
+                      {{Terrain.coefEspaceVert}}
+                      <li>
+                     <label> Hauteur max construction  </label>
+                      </li>
+                      {{Terrain.hauteurMaxConstruction}}
+                      <li>
+                        <label> Prix m2 construction </label>
+                      </li>
+                      {{Terrain.prixConstruction}}
+                  </td>
+                      </ul>
+              </tr>
+              </table>
+                      <button type="submit" name="send1"> Enregister </button>
+
+            </form>
+         
+         {% endif %}
+         {% endwith %}
+          </div>
+     <div id="ged"  style="display: none;">
+          <form enctype="multipart/form-data" method="post">
+            {% csrf_token%}
+            <li>
+               <label>  Fichier </label>
+            </li>
+             {{ged.fichier}}
+            <li>
+              <label> Produit</label>
+            </li>
+             {{ged.produit}}
+            <button type="submit" name="ged" class="save btn btn-success">Ajouter</button>
+          
+          </form>
+          <br />
+          <table>
+                  {% for ges in dataGestion%}
+              <tr>
+                  <td><a href="{{ges.doc.url}}" ><i class="fa fa-file-pdf-o" style="font-size:48px;color:red" ></i>{{ges.nom}} </a>
+                      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                          <button href="{{'home/delete-gestion'}}" type="button" class="btn btn-danger">Supprimer</button>
+                          <button type="button" class="btn btn-primary">Partager</button>
+                      </div>
+                  </td>
+              </tr>
+          
+          
+          
+                  {%endfor%}
+          
+          </table>
+        </div>  
+  </body>
+</html>

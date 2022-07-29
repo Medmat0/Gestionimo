@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+ 
+<html>
+<head>
+	<title>Courcier immobilier</title>
+	
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'Css/Login.css'%}">
+</head>
+
+<body>
+	
+
+			<div class="login">
+				<form method='POST'>
+					{% csrf_token %}
+					<label for="chk" aria-hidden="true">Authentification</label>
+					{% if eror %}
+					<p style='color: red'> {{eror}}</p>
+					{% endif %}
+					<input type="text" name="name" placeholder="Email" >
+					<input type="password" name="pswd" placeholder="Mot de passe  " required="">
+					<button type="submit">Se connecter</button>
+				</form>
+			</div>
+	</div>
+</body>
+</html>

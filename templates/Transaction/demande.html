@@ -1,0 +1,166 @@
+<html>
+{% load static %}
+<head>
+  <title>Créer une demande</title>
+        <meta charset="utf-8">
+
+  <link rel="stylesheet" href="{% static 'Css/formset.css' %}"> 
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+<body>
+  <div class="forms">
+      <form method="POST" >
+        <table>
+          <tr>
+           <td> 
+        {% csrf_token %}
+      <ul class="form-style-1">
+        <div id="demande">
+         <li>
+          <label>Contact</label> 
+           {{Demande.contact}} 
+           <div class="box" style="display: flex;">
+            <a class="button" href="#popup1">ajouter un contact 
+            </a>
+        </li>
+       
+        <li>
+          <label>Description</label>
+          {{Demande.resume}}
+        </li>
+        <li>  <label > Type de produit </label></li>
+        <select name="type" id="type">
+          
+            <option value="Terrain">Terrain</option>
+            <option value="Bureau"> Bureau</option>    
+            <option value="Local Commercial"> Local Comercial</option>    
+            <option value="Entrepot"> Entrepot</option>    
+      
+        </select>
+        <li>  <label > Categorie </label></li>
+        <select name="Categorie" id="Categorie">
+          
+            <option value="LOCATION">Location </option>
+            <option value="VENTE">Vente</option>    
+      
+        </select>
+      </td>
+      <td>
+        <li> <Label> Nombre de Pieces</Label></li>
+        <input  type="number" name="nombrepieces">
+        <li>  <label> Surface </label> </li>
+        <input  type="number" name="surface"> m²
+       
+         <li><label> Budget Max</label></li> 
+         <input type="number" name="Budget-max">  £
+         <li><label> Budget      Min </label></li>
+          <input type="number" name="Budget-min"> £
+         </td>
+         <td>
+          <li> <label > Ville </label></li>
+          <input type="text" name="ville">
+          <li> <label > Code Postal</label></li>
+          <input type="number" name="codepostal">
+         </td>
+        </tr>
+        </table>
+         <div>
+          <button type = "submit "> Ajouter </button>
+          </div>
+
+      </ul>
+      </form>
+      
+    </div>
+
+
+    <div id="popup1" class="overlay">
+      <div class="popup">
+        <h2>Ajouter un contact </h2>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+         
+          <form method="POST">
+            <table>
+             <tr >
+            {% csrf_token %}
+          <td>
+           <li> 
+            <label> Societe </label>
+          </li>
+             {{Contact.societe}}
+          
+          <li>
+          <label> Prenom </label>
+        </li>  
+          {{Contact.prenom}}
+            
+            <li>
+            <label> Nom </label>
+          </li>
+            {{Contact.nom}}
+            
+           <li>
+            <label> Mail </label>
+          </li>
+            {{Contact.mail}}
+            
+          <li>
+            <label> Adresse </label>
+          </li>
+            {{Contact.adresse}}
+            
+          <li>
+            <label> Code Postal </label>
+          </li>
+            {{Contact.codePostal}}
+           </td>
+           <td>
+          <li>
+            <label> Ville </label>
+          </li>
+            {{Contact.ville}}
+            
+          <li>
+            <label> Statut </label>
+          </li>
+       
+            {{Contact.statut}}
+            <li>
+              <label>  Gender </label>
+           </li>
+                {{Contact.genre}} 
+          <li>
+            <label> Capital Social  </label>
+          </li> 
+            {{Contact.capitalSocial}}
+    
+          <li>
+            <label> Num RCS </label>
+          </li>
+            {{Contact.numRCS}}
+            
+          <li> 
+             <label> Telephone</label>
+            </li>
+             {{Contact.telephone}}
+            
+          <li>
+             <label> Ville RCS </label>
+            </li>
+             {{Contact.villeRCS}}
+           </td>
+             </tr>
+            </table>
+            <button type="submit" name ="contact"> Ajouter </button>
+            </form>
+          
+    
+        </div>
+      </div>
+      </div>
+  </body>
+
+  </html>
+

@@ -1,0 +1,152 @@
+{% load static %}
+
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'Css/affichage.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+  <style>
+
+:root {
+  --rad: 0.7rem;
+  --dur: 0.3s;
+  --color-dark: #2f2f2f;
+  --color-light: rgb(238, 190, 190);
+  --color-brand: #d62f2f;
+  --font-fam: 'Lato', sans-serif;
+  --height: 5rem;
+  --btn-width: 6rem;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 10px;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+form {
+  position: relative;
+  width: 30rem;
+  background: var(--color-brand);
+  border-radius: var(--rad);
+  
+}
+input, button {
+  height: var(--height);
+  font-family: var(--font-fam);
+  border: 0;
+  color: var(--color-dark);
+  font-size: 1.8rem;
+}
+input[type="search"] {
+  outline: 0;
+  width: 100%;
+  background: var(--color-light);
+  padding: 0 1.6rem;
+  border-radius: var(--rad);
+  appearance: none;
+  transition: all var(--dur) var(--bez);
+  transition-property: width, border-radius;
+  z-index: 1;
+  position: relative;
+}
+button {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--btn-width);
+  font-weight: bold;
+  background: var(--color-brand);
+  border-radius: 0 var(--rad) var(--rad) 0;
+}
+input:not(:placeholder-shown) {
+  border-radius: var(--rad) 0 0 var(--rad);
+  width: calc(100% - var(--btn-width));
+}
+input:not(:placeholder-shown) + button {
+  display: block;
+}
+label {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+  </style>
+ 
+<div class="container mt-100">  
+  {% csrf_token %}
+  <form onsubmit="event.preventDefault();" role="search" , method="POST">
+    <label for="search">Rechercher des produits ... </label> 
+    <input id="search" type="search"  onkeyup="search_animal()" name="search" placeholder="Rechercher..."  autofocus required />
+    <button type="submit">Go</button>    
+  </form>                             
+          <div class="row">
+      
+          {% for photo in Photos %} 
+            
+          <div id="typebien" class="col-md-4 col-sm-6">
+            <div id='card'class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
+                <div class="inner">
+                  <div class="main-img"><img src="{{photo.image.url}}" alt="Category"></div>
+                  <div class="thumblist"><img src="{{photo.image.url}}" alt="Category"><img src="{{photo.image.url}}" alt="Category"></div>
+                </div></a>
+              <div id="tailleter"class="card-body text-center">
+                <h4  class="card-title">{{photo.produit.typeBien}}</h4>
+                <p class="text-muted">{{photo.produit.tailleTerrain}} m² /  {{photo.produit.prixAffiche}} £ </p><a class="btn btn-outline-primary btn-sm" onclick="voirplus()" data-abc="true">Voire plus</a>
+                <div id="voireplus" style="display: none;">
+                       <p class="text-muted"> a {{photo.produit.ville}}  /  {{photo.produit.nombrePieces}} Pieces </p>   
+                   
+                </div>
+              </div>
+            </div>
+          </div>
+
+         {% endfor  %}
+     
+        </div>
+        </div>
+
+  <script>
+    function search_animal() {
+    let input = document.getElementById('search').value
+    input=input.toLowerCase();
+    let x = document.getElementsByClassName('col-md-4 col-sm-6');
+      
+    for (i = 0; i < x.length; i++) { 
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display="none";
+        }
+        else {
+            x[i].style.display="block";                 
+        }
+    }
+}
+</script>
+<script>
+var clickCount = 0
+function voirplus() {
+          const Prod = document.getElementById('voirplus');
+          if ( clickCount % 2 == 0 ) {
+             Prod.style.display ='block';
+         } else {
+             Prod.style.display ='none';
+         }
+                clickCount++
+
+         };
+
+  </script>
+
+</body>
+        </html>

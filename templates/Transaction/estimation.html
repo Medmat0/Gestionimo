@@ -1,0 +1,31 @@
+<html>
+{% load static %}
+  <head>
+    <title>Créer un offre</title>
+      	<meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'Css/formset.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/pdf.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="offre">
+    
+        <form method="POST" >
+          {% csrf_token %}
+          
+           <li>
+            <label>Produit</label>  
+              {{Estimation.product}}
+          </li>
+
+          <button type = "submit " name="estimation"> Ajouter </button>
+            
+        </form>
+         
+        <a href="{% url 'estimationpdf' %}" download><span>Telecharger </span><span>PDF</span></a>
+      </div>
+
+  </body>
+</html>

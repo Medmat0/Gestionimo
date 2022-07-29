@@ -1,0 +1,327 @@
+.forms{
+	width: 100%;
+	height: 450px;
+	display: absolut;
+	margin-left: 300px;
+  }
+  
+.surface{
+	PADDING: 50;
+    DISPLAY: FLEX;
+    ALIGN-ITEMS: CENTER;
+    MARGIN: AUTO;
+}  
+  
+  select {
+	  width: 60%;
+	  height: 40px;
+	  justify-content: center;
+	  
+	  margin: 20px auto;
+	  padding: 10px;
+	  border: none;
+	  outline: none;
+	  border-radius: 5px;
+  
+  }
+
+
+
+td { 
+	padding-right: 140px;
+	
+  }
+  #commentaire{
+	margin-left: 350px;
+  }
+  #height{
+	height: 290px;
+  }
+  
+  label {
+	  cursor: pointer;
+	  color: #000000;
+	  font-weight: bold;
+  }
+  label:hover {
+	  color: #b52626;
+  }
+  
+  
+  input[name="name"] {
+	  display: none;
+  }
+  input ,textarea {
+	  
+	  background: #ebebeb;
+	  justify-content: center;
+	  padding-bottom: 40px;
+	  margin-bottom: 5px;
+	  padding: 10px;
+	  border: none;
+	  outline: none;
+	  border-radius: 5px;
+  } 
+  button{
+	  width: 30%;
+	  height: 40px;
+	  margin: 10px auto;
+	  justify-content: center;
+	  display: block;
+	  color: #fff;
+	  background:  #FF1906;
+	  font-size: 1em;
+	  font-weight: bold;
+	  margin-top: 20px;
+	  outline: none;
+	  border: none;
+	  border-radius: 5px;
+	  transition: .2s ease-in;
+	  cursor: pointer;
+  }
+  button:hover{
+	  background:   rgb(255, 164, 164);
+  }
+  
+  .form-style-1 {
+	  /* margin:10px auto; */
+	  /* max-width: 400px; */
+	  padding: 20px 12px 10px 20px;
+	  font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  }
+  li {
+  
+	  text-decoration: none;
+  }
+  .form-style-1 li {
+	  padding: 0;
+	  display: block;
+	  list-style: none;
+	  margin: 10px 0 0 0;
+  }
+  .form-style-1 label{
+	  margin:0 0 3px 0;
+	  padding:0px;
+	  display:block;
+	  font-weight: bold;
+  }
+  .form-style-1 input[type=text], 
+  .form-style-1 input[type=date],
+  .form-style-1 input[type=datetime],
+  .form-style-1 input[type=number],
+  .form-style-1 input[type=search],
+  .form-style-1 input[type=time],
+  .form-style-1 input[type=url],
+  .form-style-1 input[type=email],
+  textarea, 
+  select{
+	  box-sizing: border-box;
+	  -webkit-box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  border:1px solid #BEBEBE;
+	  padding: 7px;
+	  margin:0px;
+	  /*-webkit-transition: all 0.30s ease-in-out;
+	  -moz-transition: all 0.30s ease-in-out;
+	  -ms-transition: all 0.30s ease-in-out; 
+	  -o-transition: all 0.30s ease-in-out; */
+	  outline: none;	
+  }
+  .form-style-1 input[type=text]:focus, 
+  .form-style-1 input[type=date]:focus,
+  .form-style-1 input[type=datetime]:focus,
+  .form-style-1 input[type=number]:focus,
+  .form-style-1 input[type=search]:focus,
+  .form-style-1 input[type=time]:focus,
+  .form-style-1 input[type=url]:focus,
+  .form-style-1 input[type=email]:focus,
+  .form-style-1 textarea:focus, 
+  .form-style-1 select:focus{
+	  -moz-box-shadow: 0 0 8px #88D5E9;
+	  -webkit-box-shadow: 0 0 8px #88D5E9;
+	  box-shadow: 0 0 8px #88D5E9;
+	  border: 1px solid #88D5E9;
+  }
+  .form-style-1 .field-divided{
+	  width: 49%;
+  }
+  
+  .form-style-1 .field-long{
+	  width: 100%;
+  }
+  .form-style-1 .field-select{
+	  width: 100%;
+  }
+  .form-style-1 .field-textarea{
+	  height: 100px;
+  }
+  .form-style-1 input[type=submit], .form-style-1 input[type=button]{
+	  background: #4B99AD;
+	  padding: 8px 15px 8px 15px;
+	  border: none;
+	  color: #fff;
+  }
+  .form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
+	  background: #4691A4;
+	  box-shadow:none;
+	  -moz-box-shadow:none;
+	  -webkit-box-shadow:none;
+  }
+  .form-style-1 .required{
+	  color:red;
+  }
+  
+  .overlay {
+	  position: fixed;
+	  top: 0;
+	  bottom: 0;
+	  left: 0;
+	  right: 0;
+	  background: rgba(0, 0, 0, 0.7);
+	  transition: opacity 500ms;
+	  visibility: hidden;
+	  opacity: 0;
+	}
+	.overlay:target {
+	  visibility: visible;
+	  opacity: 1;
+	}
+	
+	.popup {
+	  margin: 70px auto;
+	  padding: 20px;
+	  background: #fff;
+	  border-radius: 5px;
+	  width: 40%;
+	  position: relative;
+	  transition: all 5s ease-in-out;
+	}
+	
+	.popup h2 {
+	  margin-top: 0;
+	  color: #333;
+	  font-family: Tahoma, Arial, sans-serif;
+	}
+	.popup .close {
+	  position: absolute;
+	  top: 20px;
+	  right: 30px;
+	  transition: all 200ms;
+	  font-size: 35px;
+	  font-weight: bold;
+	  text-decoration: none;
+	  color: #333;
+	}
+	.popup .close:hover {
+	  color: #06D85F;
+	}
+  
+	
+	.popup .content {
+	  max-height: 30%;
+	  overflow: auto;
+	}
+	
+	.container {
+	  /* height: 100vh; */
+	  max-height: 800px;
+	  max-width: 1280px;
+	  min-width: 1000px;
+	  display: flex;
+	  justify-content: space-around;
+	  align-items: center;
+	  margin: 0 auto;
+	  }
+	.border {
+	  height: 369px;
+	  width: 290px;
+	  background: transparent;
+	  border-radius: 10px;
+	  transition: border 1s;
+	  position: relative;
+	}
+	.border:hover {
+	  border: 1px solid #fff;
+	}
+	.card {
+	  height: 379px;
+	  width: 300px;
+	  background: #808080;
+	  border-radius: 10px;
+	  transition: background 0.8s;
+	  overflow: hidden;
+	  background: #000;
+	  box-shadow: 0 70px 63px -60px #000;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  position: relative;
+	}
+	.card0 {
+	  
+	
+	  background-size: 300px;
+	}
+	.card0:hover {
+	  background: url("https://i.pinimg.com/736x/8f/a0/51/8fa051251f5ac2d0b756027089fbffde--terry-o-neill-al-pacino.jpg") left center no-repeat;
+	  background-size: 600px;
+	}
+	.card0:hover h2 {
+	  opacity: 1;
+	}
+	.card0:hover .fa {
+	  opacity: 1;
+	}
+	.card1 {
+	  background: url("https://i.pinimg.com/originals/28/d2/e6/28d2e684e7859a0dd17fbd0cea00f8a9.jpg") center center no-repeat;
+	  background-size: 300px;
+	}
+	.card1:hover {
+	  background: url("https://i.pinimg.com/originals/28/d2/e6/28d2e684e7859a0dd17fbd0cea00f8a9.jpg") left center no-repeat;
+	  background-size: 600px;
+	}
+	.card1:hover h2 {
+	  opacity: 1;
+	}
+	.card1:hover .fa {
+	  opacity: 1;
+	}
+	.card2 {
+	  background: url("https://i.pinimg.com/originals/ee/85/08/ee850842e68cfcf6e3943c048f45c6d1.jpg") center center no-repeat;
+	  background-size: 300px;
+	}
+	.card2:hover {
+	  background: url("https://i.pinimg.com/originals/ee/85/08/ee850842e68cfcf6e3943c048f45c6d1.jpg") left center no-repeat;
+	  background-size: 600px;
+	}
+	.card2:hover h2 {
+	  opacity: 1;
+	}
+	.card2:hover .fa {
+	  opacity: 1;
+	}
+	h2 {
+	  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	  color: #fff;
+	  margin: 20px;
+	  opacity: 0;
+	  transition: opacity 1s;
+	}
+	.fa {
+	  opacity: 0;
+	  transition: opacity 1s;
+	}
+	.icons {
+	  position: absolute;
+	  fill: #fff;
+	  color: #fff;
+	  height: 130px;
+	  top: 226px;
+	  width: 50px;
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: space-around;
+	}
+	  
+	  

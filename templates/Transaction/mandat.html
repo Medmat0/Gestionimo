@@ -1,0 +1,66 @@
+<html>
+{% load static %}
+  <head>
+    <title>Créer un mandat</title>
+      	<meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'Css/formset.css' %}"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="forms">
+        <form method="POST" >
+          {% csrf_token %}
+        
+          <div id="mandat">
+           <li>
+            <label>Produit</label> 
+             {{Mandat.product}} 
+          </li>
+            <button type = "submit" name="prod"> Suivante </button>
+            </div> 
+        </form>
+
+        
+
+        <form method="POST" >
+          {% csrf_token %}
+          <div id="flouss">
+        <li>
+            <label>Prix</label>
+            {{prix}}
+            <br>
+          </li>
+          <li>
+            <label>Honoraire</label>
+            {{honoraire}}
+          </li>
+          <li>
+          <label>Date</label>
+            {{date}}
+            </li>
+          </div>
+          
+          <div>
+            <button type = "submit" name="mandat"> Ajouter </button>
+            </div>
+
+       
+        </form>
+        <div>
+
+      {% if typeMandat == 'EXCLUSIVE' %}
+           
+            <a href="{% url 'pdfcreate' %}" download><span>Telecharger </span><span>PDF</span></a>
+            
+        {% elif typeMandat == 'NON_EXCLUSIVE' %}
+            <a href="{% url 'pdfcreate2' %}" download><span>Telecharger </span><span>PDF</span></a>
+            
+        {% endif %}
+
+        </div>
+
+    </body>
+
+    </html>
