@@ -26,9 +26,9 @@ django_heroku.settings(local())
 SECRET_KEY = 'django-insecure-&b%xp$n^4+64jirak-)c1+2vr(m8jo6by&3$ia-cfoa15z_p--'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','gestionimo.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'Gestionimo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-#DATABASES = {
- #   'default': {
-  #      'ENGINE': 'django.db.backends.sqlite3',
-   #     'NAME': BASE_DIR / 'db.sqlite3',
-   # }
-# }
+DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': BASE_DIR / 'db.sqlite3',
+    }
+ }
 
 DATABASES = {
     'default' : dj_database_url.config()
